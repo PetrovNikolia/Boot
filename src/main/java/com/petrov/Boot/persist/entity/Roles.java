@@ -1,12 +1,10 @@
 package com.petrov.Boot.persist.entity;
 
-
 import javax.persistence.*;
-import java.util.List;
 
 @Entity
 @Table(name = "products")
-public class Product {
+public class Roles {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -15,39 +13,39 @@ public class Product {
     @Column
     private String title;
 
-    @Column
-    private int cost;
+    @ManyToOne
+    private User user;
 
-    public Product() {
+    public Roles() {
     }
 
-    public Product(Integer id, String title, int cost) {
+    public Roles(Integer id, String title, User user) {
         this.id = id;
         this.title = title;
-        this.cost = cost;
+        this.user = user;
     }
 
     public Integer getId() {
         return id;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
-    public int getCost() {
-        return cost;
-    }
-
     public void setId(Integer id) {
         this.id = id;
+    }
+
+    public String getTitle() {
+        return title;
     }
 
     public void setTitle(String title) {
         this.title = title;
     }
 
-    public void setCost(int cost) {
-        this.cost = cost;
+    public User getUser() {
+        return user;
+    }
+
+    public void setUser(User user) {
+        this.user = user;
     }
 }
